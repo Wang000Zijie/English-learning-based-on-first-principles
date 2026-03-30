@@ -1,0 +1,125 @@
+api:
+  provider: minimax
+  minimax:
+    base_url: https://api.minimax.chat/v1
+    api_key: sk-cp-6hOPdcHE7ZGNHgfNJ4t4Zx5tPMPWnPdToa-z1W7sznPMF9D1QhvIljxXgqKZLcUEuLMN2jGjzLVTvyR_DQwPdHw6kMbz-CX3blq-wfrz6wA-wf3gax9Lpuw
+    model: MiniMax-M2.7
+    temperature: 0.3
+  kimi:
+    base_url: https://api.moonshot.cn/v1
+    api_key: YOUR_KIMI_API_KEY_HERE
+    model: moonshot-v1-8k
+    temperature: 0.3
+  deepseek:
+    base_url: https://api.deepseek.com/v1
+    api_key: sk-a7e11127924a4e4190f4f512b1bde0ed
+    model: deepseek-chat
+    temperature: 0.3
+  gpt:
+    base_url: https://api.openai.com/v1
+    api_key: YOUR_GPT_API_KEY_HERE
+    model: gpt-4o
+    temperature: 0.3
+  gemini:
+    base_url: https://generativelanguage.googleapis.com/v1beta/openai
+    api_key: YOUR_GEMINI_API_KEY_HERE
+    model: gemini-2.0-flash
+    temperature: 0.3
+learning:
+  review_intervals:
+  - 1
+  - 3
+  - 7
+  - 15
+  - 30
+  - 90
+  max_words_per_batch: 20
+  level_thresholds:
+    new: 0
+    learning: 1
+    familiar: 3
+    mastered: 6
+  passage:
+    min_words: 4
+    max_words: 10
+    preferred_levels:
+    - learning
+    - familiar
+    - new
+    target_length_words: 120
+    familiar_reference_words: 50
+    new_word_feed_count: 20
+ui:
+  font_size: 18
+  theme: dark
+  window_width: 1400
+  window_height: 850
+story_directions:
+  presets:
+  - id: daily_life
+    name: 日常生活
+    description: 发生在普通人身上的真实日常场景，如工作、家庭、购物、旅行等
+    prompt_inject: '体裁：写实叙事短文
+
+      场景：现代都市日常，可以是工作、通勤、购物、家庭、社交等任意真实场景
+
+      语气：自然、温暖、贴近生活
+
+      视角：第一人称或第三人称均可
+
+      要求：读者读完之后应该有「这就是我的日常」的代入感
+
+      '
+  - id: mystery
+    name: 悬疑推理
+    description: 包含谜题、线索、调查或反转的故事，节奏紧凑，气氛紧张
+    prompt_inject: '体裁：悬疑短篇
+
+      场景：可以是谋杀案调查、失踪人口、神秘事件、密室谜题等
+
+      语气：紧张、克制、有压迫感
+
+      结构要求：必须有一个悬念或未解之谜，可以不解决，但要留下线索
+
+      要求：结尾必须让读者想继续看下去
+
+      '
+  - id: nature_science
+    name: 自然与科学
+    description: 以自然现象、科学发现或环境变化为背景的叙事或描写
+    prompt_inject: '体裁：科普叙事或自然描写
+
+      场景：可以是野外探险、实验室发现、气候现象、动植物观察等
+
+      语气：客观而富有好奇心，偶尔有诗意
+
+      要求：融入至少一个有趣的科学事实或自然现象，使词汇在真实的知识语境中出现
+
+      '
+  custom: []
+  freeform_enabled: true
+  freeform:
+    name: 白板（自由发挥）
+    prompt_inject: 不限制体裁和场景，根据本次词汇的特点，自行选择最适合这批词汇自然出现的体裁和情节。
+agent_roles:
+  enabled: false
+  roles:
+    author: minimax
+    analyst: deepseek
+    reviewer: gpt
+    reviewer_enabled: false
+    news_fetcher: minimax
+news:
+  enabled: false
+  provider: bocha
+  bocha:
+    api_key: YOUR_BOCHA_API_KEY_HERE
+    base_url: https://api.bochaai.com/v1/web-search
+    freshness: oneWeek
+    count: 5
+  tavily:
+    api_key: YOUR_TAVILY_API_KEY_HERE
+    base_url: https://api.tavily.com/search
+    search_depth: advanced
+    max_results: 5
+    include_raw_content: true
